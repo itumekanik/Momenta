@@ -20,8 +20,8 @@ A web framework for simple beam analysis.
 4. Clone the project files from your GitHub account to your local computer using either command-line Git as explained [here](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository) or SourceTree.
 5. Develop your code on your local computer using Visual Studio Code. Git is integrated to Visual Studio Code, therefore your will see some Git tools in the editor. Commit as much as you can.
 6. Push your code from local computer to your GitHub account using the command line as explained [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/) or using SourceTree.
-7. Go to your GitHub page of the project.
-8. On the right-upper side of the page click "New Pull Request" and complete the process.
+7. Go to GitHub page of the project @ [https://github.com/itumekanik/Momenta/]([https://github.com/itumekanik/Momenta/])
+8. On the right-upper side of the page click `New Pull Request` and complete the process.
 9. If your changes are accepted by the project leader, they will be merged to the project.
 10. If there are changes made to the original project by other users, your should merge them to your project as explained [here](https://help.github.com/articles/syncing-a-fork/) or [here]https://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository().
 
