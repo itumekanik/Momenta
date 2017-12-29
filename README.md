@@ -1,4 +1,5 @@
 # Momenta
+
 A web framework for simple beam analysis.
 
 ## How to Contribute
@@ -24,4 +25,3 @@ A web framework for simple beam analysis.
 8. On the right-upper side of the page click `New Pull Request` and complete the process.
 9. If your changes are accepted by the project leader, they will be merged to the project.
 10. If there are changes made to the original project by other users, your should merge them to your project as explained [here](https://help.github.com/articles/syncing-a-fork/) or [here]https://stackoverflow.com/questions/7244321/how-do-i-update-a-github-forked-repository().
-
