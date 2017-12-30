@@ -6,11 +6,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
     <title>Document</title>
+
+    <!-- CSS rule sets -->
+    <style>
+        body {
+            background: rgb(192, 196, 195);
+        }
+        #container {
+            width: 100%;
+            height: 100vh;      
+        }
+    </style>
+
 </head>
 <body>
     
+    <div id="container"></div>
 
     <script>
+        var paper = Raphael("container", "100%", "100%");
+
+        //Custom configurations
+        var c = {x:500, y:200, w:400, h:20};
+
+        var kiris = paper.rect(c.x, c.y, c.w, c.h)
+                         .attr({fill:"yellow", stroke:"red"});
+
+
+        var mesnet1 = paper.path(["M", c.x, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
+                           .attr({fill:"blue"})
+
+        var mesnet1 = paper.path(["M", c.x + c.w, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
+                           .attr({fill:"blue"})
+
+
+        /*
         var paper = Raphael(0, 0, 1000, 1000);
 
         var circle = paper.circle(200, 200, 100).attr({fill:"red"});
@@ -22,6 +52,18 @@
 
             console.log("Deneme2")
         })
+
+
+        Raphael.fn.MyRect = function( cx, cy, width, height ) {
+            var xLeftTop = cx - (width / 2);
+            var yLeftTop = cy - (height / 2);
+            this.rectObj = paper.rect( xLeftTop, yLeftTop, width, height );
+            return this;
+        };
+
+        paper.MyRect( 95, 35, 50, 50 ); // 95 is the center in x and 35 the center in y
+
+        */
     
     </script>
 </body>
