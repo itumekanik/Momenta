@@ -26,18 +26,36 @@
     <script>
         var paper = Raphael("container", "100%", "100%");
 
-        //Custom configurations
         var c = {x:500, y:200, w:400, h:20};
 
-        var kiris = paper.rect(c.x, c.y, c.w, c.h)
-                         .attr({fill:"yellow", stroke:"red"});
+        paper.text(c.x+c.w/2, c.y-150, "Yüke clikleyin lütfen...").attr({fill: '#ff0000'});
 
+        var Load = function (paper, c) {
+            
+            this.shape = paper.path(["M", c.x+c.w/2, c.y, "l", 0, -50]).attr({'arrow-start':'classic-wide-long', 'stroke-width': 4})
+
+            this.select = () => {
+                this.shape.animate({stroke:"yellow"}, 300)
+            }
+
+            this.shape.click(()=>{
+                this.select();
+            })
+        }
+
+
+        var kiris = paper.rect(c.x, c.y, c.w, c.h)
+                         .attr({fill:"gray", stroke:"black"});
+        
+        var P = new Load(paper, c);
+
+        
 
         var mesnet1 = paper.path(["M", c.x, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
-                           .attr({fill:"blue"})
+                           .attr({fill:"green"})
 
         var mesnet2 = paper.path(["M", c.x + c.w, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
-                           .attr({fill:"blue"})
+                           .attr({fill:"green"})
 
 
         /*
