@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
     <title>Document</title>
 
     <!-- CSS rule sets -->
@@ -14,32 +17,69 @@
         }
         #container {
             width: 100%;
-            height: 100vh;      
+            height: 100vh;
+            position: relative; /*Icerideki text kutusunu kendisine rolatif konumlandirmak icin gerekli */    
+        }
+        #div_input1 {
+            position: absolute;
+            visibility: hidden; /*Ilk bakista visible degil. Yuk Secilince visible olacak */
         }
     </style>
 
 </head>
 <body>
     
-    <div id="container"></div>
+    <div id="container">
+
+        <div id="div_input1">
+            <input type="text" id="input_P" style="width:50px" value="10">
+            <button onclick="P_okeylendi()" >OK</button>
+        </div>
+
+    </div>
 
     <script>
+
+        var P_okeylendi = function () {
+            P.unselect();
+        }
+
         var paper = Raphael("container", "100%", "100%");
 
         var c = {x:500, y:200, w:400, h:20};
 
-        paper.text(c.x+c.w/2, c.y-150, "Yüke clikleyin lütfen...").attr({fill: '#ff0000'});
+        paper.text(c.x+c.w/2, c.y-150, "Yüke clikleyin lütfen...").attr({fill: '#ff0', 
+                                                                        "font-size": 24, 
+                                                                        "font-family": "Arial, Helvetica, sans-serif"});
 
         var Load = function (paper, c) {
+
+            this.c = c;
+            this.selected = false;
+            this.inputP = $("#div_input1");
             
             this.shape = paper.path(["M", c.x+c.w/2, c.y, "l", 0, -50]).attr({'arrow-start':'classic-wide-long', 'stroke-width': 4})
 
             this.select = () => {
                 this.shape.animate({stroke:"yellow"}, 300)
+                this.inputP.css({"visibility":"visible",
+                                 "top":this.c.y - 50,
+                                 "left":this.c.x + this.c.w/2+10}).focus();
+                this.selected = true;
+            }
+
+            this.unselect = () => {
+                this.shape.animate({stroke:"black"}, 300)
+                this.inputP.css({"visibility":"hidden"});
+                this.selected = false;
             }
 
             this.shape.click(()=>{
-                this.select();
+                if (this.selected) {
+                    this.unselect();
+                } else {
+                    this.select();
+                }
             })
         }
 
@@ -49,39 +89,13 @@
         
         var P = new Load(paper, c);
 
-        
-
+    
         var mesnet1 = paper.path(["M", c.x, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
                            .attr({fill:"green"})
 
         var mesnet2 = paper.path(["M", c.x + c.w, c.y + c.h, "l", 10, 10, "l", -20, 0, "l", 10, -10])
                            .attr({fill:"green"})
 
-
-        /*
-        var paper = Raphael(0, 0, 1000, 1000);
-
-        var circle = paper.circle(200, 200, 100).attr({fill:"red"});
-
-        circle.click(function(){
-            console.log("Cliklendi", this)
-
-            this.animate({cx:800, r:50, fill:"blue"}, 3000, "elastic")
-
-            console.log("Deneme2")
-        })
-
-
-        Raphael.fn.MyRect = function( cx, cy, width, height ) {
-            var xLeftTop = cx - (width / 2);
-            var yLeftTop = cy - (height / 2);
-            this.rectObj = paper.rect( xLeftTop, yLeftTop, width, height );
-            return this;
-        };
-
-        paper.MyRect( 95, 35, 50, 50 ); // 95 is the center in x and 35 the center in y
-
-        */
     
     </script>
 </body>
